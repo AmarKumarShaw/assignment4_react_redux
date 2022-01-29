@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+import {useState,useEffect} from "react";
 import './App.css';
+import axios from "axios";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import Edit  from "./pages/Edit"
+import Delete from "./pages/Delete";
+import Home from "./pages/Home";
+import Update from "./pages/Update";
+import { useParams } from "react-router-dom";
 
 function App() {
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+{/* 
+    {
+      users.map((user)=>{
+        return(
+          <div>
+            <p>{user.name.common}</p>
+            <p>{user.population}</p>
+           <Link to= "/edit"><button>Edit</button></Link>
+          <Link to="/delete"><button>delete</button></Link>
+          </div>
+        )
+      })
+
+    }
+     */}
+
+
+
+      <Switch>
+      <Route exact path="/" component={Home} />
+          <Route exact path="/edit/:id" component={Edit} />
+        <Route exact path="/delete" component={Delete} />
+        <Route exact path="/update/:name"  component={Update} />
+      </Switch>
+
+
+    
+    
     </div>
   );
 }
